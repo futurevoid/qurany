@@ -41,9 +41,7 @@ def increment_button():
 
 
 if input=="":
-    req = requests.get(f"https://www.searchtruth.org/quran/images1/{st.session_state.count}.jpg")
-    data = req.json()
-    image = data["image"]
+    image = f"https://www.searchtruth.org/quran/images1/{st.session_state.count}.jpg"
     st.image(image, use_column_width=True)
     st.markdown(f"<h1>الصفحة {st.session_state.count}</h1>", unsafe_allow_html=True)
 
