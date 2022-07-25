@@ -15,7 +15,7 @@ remove_menu_footer = """
 footer { visibility:hidden; }
 </style>
 """
-input = st.sidebar.text_input("رقم الصفحة")
+input = st.sidebar.text_input("رقم الصفحة", "1")
 inputstartingout=print(input)
 #inputpage = st.sidebar.text_input("الصفحة")
 st.markdown(remove_menu_footer, unsafe_allow_html=True)
@@ -39,23 +39,38 @@ def increment_button():
     st.session_state.count += increment_value
     print ("def"+str(st.session_state.count))
 
+input =int(input)
 
-if input=="":
+if st.session_state.count<10:
+    pagenum = "00"+str(st.session_state.count)
+elif st.session_state.count<100:
+    pagenum = "0"+str(st.session_state.count)
+else:
+    pagenum = st.session_state.count     
+print(st.session_state.count)
+    
+if input=="1":
+    
     image = f"https://www.searchtruth.org/quran/images1/001.jpg"
     st.image(image, use_column_width=True)
-    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)
-elif input>10:
-    image = f"https://www.searchtruth.org/quran/images1/00{st.session_state.count}.jpg"
+    st.markdown(f"<h6>الصفحة {pagenum}</h6>", unsafe_allow_html=True)
+    
+elif input<10:
+    pagenum = "00"+str(st.session_state.count)
+    image = f"https://www.searchtruth.org/quran/images1/{pagenum}.jpg"
     st.image(image, use_column_width=True)
-    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)
-elif input>100:
-    image = f"https://www.searchtruth.org/quran/images1/0{st.session_state.count}.jpg"
+    st.markdown(f"<h6>الصفحة {pagenum}</h6>", unsafe_allow_html=True)
+    print(45+input)
+elif input<100:
+    pagenum = "0"+str(st.session_state.count)
+    image = f"https://www.searchtruth.org/quran/images1/{pagenum}.jpg"
     st.image(image, use_column_width=True)
-    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)
+    st.markdown(f"<h6>الصفحة {pagenum}</h6>", unsafe_allow_html=True)
+    print(45+input)
 else:
-    image = f"https://www.searchtruth.org/quran/images1/{st.session_state.count}.jpg"
+    image = f"https://www.searchtruth.org/quran/images1/{pagenum}.jpg"
     st.image(image, use_column_width=True)
-    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)        
+    st.markdown(f"<h6>الصفحة {pagenum}</h6>", unsafe_allow_html=True)        
 
 
 
@@ -63,7 +78,7 @@ else:
 
 #pagenum = st.session_state.count
 #print(pagenum)
-#req = requests.get(f"https://dorar-hadith-api.herokuapp.com/api/search?value={input}&page={st.session_state.count}")
+#req = requests.get(f"https://dorar-hadith-api.herokuapp.com/api/search?value={input}&page=pagenum")
 #data = req.json()
 #data_len=len(data)
 #for i in range(data_len):
