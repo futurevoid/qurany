@@ -41,9 +41,23 @@ def increment_button():
 
 
 if input=="":
+    image = f"https://www.searchtruth.org/quran/images1/001.jpg"
+    st.image(image, use_column_width=True)
+    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)
+elif input>10:
+    image = f"https://www.searchtruth.org/quran/images1/00{st.session_state.count}.jpg"
+    st.image(image, use_column_width=True)
+    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)
+elif input>100:
+    image = f"https://www.searchtruth.org/quran/images1/0{st.session_state.count}.jpg"
+    st.image(image, use_column_width=True)
+    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)
+else:
     image = f"https://www.searchtruth.org/quran/images1/{st.session_state.count}.jpg"
     st.image(image, use_column_width=True)
-    st.markdown(f"<h1>الصفحة {st.session_state.count}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h6>الصفحة {st.session_state.count}</h6>", unsafe_allow_html=True)        
+
+
 
     
 
